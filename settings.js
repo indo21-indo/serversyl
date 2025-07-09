@@ -3,15 +3,15 @@ require('dotenv').config()
 
 //_______________________ ┏  Info  ┓ _______________________\\
 //
-//   Credit : AlipBot
+//   Credit : SI TANVIR 6X
 //   
 //   Note 
-//   Jangan Jual SC ini ,
-//   Jangan Buang Text ini,
-//   Siapa Mahu Upload Jangan Lupa Credit :),
-//   Siapa Tidak Letak Credit Akan Ambil Tindakan
+//   Don't Sell This SC,
+// Don't Throw Away This Text,
+// Whoever Wants To Upload Don't Forget To Credit :),
+// Whoever Doesn't Put Credit Will Take Action
 //   
-//_______________________ ┏ Make By AlipBot ┓ _______________________\\
+//_______________________ ┏ Make By SI TANVIR 6X ┓ _______________________\\
 
 
 
@@ -19,9 +19,9 @@ require('dotenv').config()
 
 //_______________________ ┏  Main Setting  ┓ _______________________\\
 
-creator = '乂𝘼𝙡𝙞𝙥乂' // Nama 
+creator = 'SI TANVIR 6X' // Nama 
 port = 8080 //port host
-LimitApikey = 200 // Limit Apikey default
+LimitApikey = 9999 // Limit Apikey default
 
 //___________ ┏  Database Mongodb Setting  ┓ ___________\\
 
@@ -35,7 +35,7 @@ servicesmtp = 'Gmail'//Ada gmail ada sendinblue ikut masing2 limit gmail 500 lim
 sendemail = process.env.sendemail //Email SMTP
 fromsendemail = process.env.fromsendemail // From Email SMTP *kalau takde custom email kena sama email dengan Email SMTP
 sendpwmail = process.env.sendpwmail // Password Email SMTP
-domain = 'alpis.eu.org'// domain website tanpa http or https
+domain = ''// domain website tanpa http or https
 
 //_______________________ ┏  Apikey  ┓ _______________________\\
 
@@ -51,61 +51,54 @@ apibitly = ['6cfc18e9bfa554714fadc10a1f6aff7555642348','2243940c230ad0d748059aee
 //APIKEY RECAPTCHA From https://www.google.com/recaptcha/about/ or https://www.google.com/recaptcha/admin  \\
 recaptcha_key_1 = process.env.recaptcha_key_1
 recaptcha_key_2 = process.env.recaptcha_key_2
-
 //_______________________ ┏  Loghandler  ┓ _______________________\\
 
 loghandler = {
     error: {
         status: false,
         code: 503,
-        message: '[!] Service Unavaible Or Error',
-        maintanied_by: `${creator}`
+        message: '[💔] TANVIR 6X SERVICE UNAVAIBLE ',
+        service_by: `${creator}`
     },
     noturl: {
-    	status: false,
-    	code: 403,
-    	message: '[!] Forbiden or Error, Invlid url',
-    	maintanied_by: `${creator}`
+      status: false,
+      code: 403,
+      message: '[💔] Forbiden or Error, Invlid url',
+      service_by: `${creator}`
     },
     notfound: {
-    	status: false,
-    	code: 404,
-    	message: '[!] Forbiden or Error, Not Found',
-    	maintanied_by: `${creator}`
+      status: false,
+      code: 404,
+      message: '[💔] Forbiden or Error, Not Found',
+      service_by: `${creator}`
     },
     notid: {
-    	status: false,
-    	code: 404,
-    	message: '[!] Forbiden or Error, Invalid Id or Zone',
-    	maintanied_by: `${creator}`
+      status: false,
+      code: 404,
+      message: '[💔] Forbiden or Error, Invalid Id or Zone',
+      service_by: `${creator}`
     },
     redy: {
-    	status: false,
-    	code: 403,
-    	message: '[!] Forbiden or Error, Alias ​​already in use',
-    	maintanied_by: `${creator}`
+      status: false,
+      code: 403,
+      message: '[💔] Forbiden or Error, Alias ​​already in use',
+      service_by: `${creator}`
     },
     emoji: {
-	    status: false,
-	    code: 403,
-	    message: '[!] Forbiden or Error, Emoji not Found',
-	    maintanied_by: `${creator}`
-	},
-    instgram: {
-	    status: false,
-	    code: 403,
-	    message: '[!] Forbiden or Error, Username tidak wujud atau account private',
-	    maintanied_by: `${creator}`
+      status: false,
+      code: 403,
+      message: '[💔] Forbidden or Error, Emoji not Found',
+      service_by: `${creator}`
    },
     register: {
-	    status: false,
-	    code: 403,
-	    message: '[!] Please Register First',
+      status: false,
+      code: 403,
+      message: '[💔] Please Register First',
   },
    verify: {
-	    status: false,
-	    code: 403,
-	    message: '[!] Please Verify Email',
+      status: false,
+      code: 403,
+      message: '[💔] Please Verify Email',
 }
 
 }
