@@ -29,6 +29,8 @@ const cron = require('node-cron');
 const bodyParser = require('body-parser')
 const User = require('./model/user');
 const dataweb = require('./model/DataWeb');
+//
+const port = process.env.PORT || 8080;
 
 //_______________________ ┏ Funtion ┓ _______________________\\
 
