@@ -1,16 +1,11 @@
 //_______________________ ┏  Info  ┓ _______________________\\
-//
-//   Credit : AlipBot
-//
-//   Note
-//   Jangan Jual SC ini ,
-//   Jangan Buang Text ini,
-//   Siapa Mahu Upload Jangan Lupa Credit :),
-//   Siapa Tidak Letak Credit Akan Ambil Tindakan
-//
+// Credit : AlipBot
+// Note:
+// Jangan Jual SC ini ,
+// Jangan Buang Text ini,
+// Siapa Mahu Upload Jangan Lupa Credit :),
+// Siapa Tidak Letak Credit Akan Ambil Tindakan
 //_______________________ ┏ Make By AlipBot ┓ _______________________\\
-
-//―――――――――――――――――――――――――――――――――――――――――― ┏  Modules ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 
 require("./settings");
 const express = require("express");
@@ -30,7 +25,7 @@ const bodyParser = require("body-parser");
 const User = require("./model/user");
 const dataweb = require("./model/DataWeb");
 
-//_______________________ ┏ Funtion ┓ _______________________\\
+//_______________________ ┏ Function ┓ _______________________\\
 
 async function resetapi() {
   await User.updateMany({}, { $set: { limitApikey: LimitApikey } });
@@ -38,18 +33,14 @@ async function resetapi() {
 }
 
 async function ResetRequestToday() {
-  await dataweb.updateOne(
-    {},
-    {
-      RequestToday: 0,
-    }
-  );
+  await dataweb.updateOne({}, { RequestToday: 0 });
   console.log("RESET Request Today DONE");
 }
 
 //_______________________ ┏ Code ┓ _______________________\\
 
-(cors = require("cors")), (secure = require("ssl-express-www"));
+const cors = require("cors");
+const secure = require("ssl-express-www");
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 var main = require("./routes/main"),
   api = require("./routes/api");
@@ -64,18 +55,18 @@ mongoose.set("strictQuery", false);
 mongoose
   .connect(keymongodb, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(async () => {
-    console.log("Connected !");
+    console.log("✅ MongoDB Connected!");
     let limit = await dataweb.findOne();
     if (limit === null) {
       let obj = { RequestToday: 0 };
       await dataweb.create(obj);
-      console.log("DATA WEBSITE Sussces Create");
+      console.log("✅ DATA WEBSITE Created");
     }
   });
 
 //_______________________ ┏ CronJob For Reset Limit ┓ _______________________\\
 
-// Reset Request Today Setiap sehari
+// Reset Request Today Setiap Sehari
 cron.schedule(
   "0 0 0 * * *",
   () => {
@@ -87,7 +78,7 @@ cron.schedule(
   }
 );
 
-//Reset All User Apikey Limit setiap sebulan
+// Reset All User Apikey Limit Setiap Sebulan
 cron.schedule(
   "0 0 1 * *",
   () => {
@@ -99,7 +90,7 @@ cron.schedule(
   }
 );
 
-//_______________________ ┏ Code ┓ _______________________\\
+//_______________________ ┏ Middleware Setup ┓ _______________________\\
 
 app.use(cookieParser("random"));
 app.use(
@@ -120,21 +111,38 @@ app.set("json spaces", 2);
 app.use(cors());
 app.use(secure);
 app.use(flash());
+
 app.use(function (req, res, next) {
   res.locals.success_messages = req.flash("success_messages");
   res.locals.error_messages = req.flash("error_messages");
   res.locals.error = req.flash("error");
   next();
 });
+
 app.use("/", main);
 app.use("/", api);
+
 app.use(function (req, res, next) {
   next(createError(404));
 });
+
 app.use(function (err, req, res, next) {
   res.render("404");
 });
 
-module.exports = app;
+//_______________________ ┏ Server Listen ┓ _______________________\\
 
-//_______________________ ┏ Make By AlipBot ┓ _______________________\\
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+  console.log(`
+████████╗░█████╗░███╗░░██╗██╗░░░██╗██╗██████╗░
+╚══██╔══╝██╔══██╗████╗░██║██║░░░██║██║██╔══██╗
+░░░██║░░░███████║██╔██╗██║╚██╗░██╔╝██║██████╔╝
+░░░██║░░░██╔══██║██║╚████║░╚████╔╝░██║██╔══██╗
+░░░██║░░░██║░░██║██║░╚███║░░╚██╔╝░░██║██║░░██║
+░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚══╝░░░╚═╝░░░╚═╝╚═╝░░╚═╝
+
+✅ Server running on PORT: ${port}
+`);
+});
